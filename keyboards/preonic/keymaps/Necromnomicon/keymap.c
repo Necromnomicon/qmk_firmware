@@ -72,10 +72,7 @@ enum combo_events {
   YU_BSPWORD,
   LU_DELWORD,
   WF_BCKTAB,
-  FP_FORTAB,
-  RHTWORD,
-  LFTWORD,
-  XCD_SELLINE
+  FP_FORTAB
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -280,24 +277,18 @@ void right_bracket_reset (qk_tap_dance_state_t *state, void *user_data) {
 //Combo Definitions
 const uint16_t PROGMEM bksp_combo[] = {KC_Z, KC_X, COMBO_END};
 const uint16_t PROGMEM bspword_combo[] = {KC_Y, KC_U, COMBO_END};
-const uint16_t PROGMEM selline_combo[] = {KC_X, KC_C, KC_D, COMBO_END};
 const uint16_t PROGMEM del_combo[] = {KC_D, KC_V, COMBO_END};
 const uint16_t PROGMEM delword_combo[] = {KC_L, KC_U, COMBO_END};
 const uint16_t PROGMEM fowardtab_combo[] = {KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM backtab_combo[] = {KC_W, KC_F, COMBO_END};
-const uint16_t PROGMEM rightword_combo[] = {KC_C, KC_D, COMBO_END};
-const uint16_t PROGMEM leftword_combo[] = {KC_X, KC_C, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [ZX_BKSP] = COMBO(bksp_combo, KC_BSPC),
   [DV_DEL] = COMBO(del_combo, KC_DEL),
   [YU_BSPWORD] = COMBO_ACTION(bspword_combo),
   [LU_DELWORD] = COMBO_ACTION(delword_combo),
-  [XCD_SELLINE] = COMBO_ACTION(selline_combo),
   [WF_BCKTAB] = COMBO_ACTION(backtab_combo),
-  [FP_FORTAB] = COMBO_ACTION(fowardtab_combo),
-  [RHTWORD] = COMBO_ACTION(rightword_combo),
-  [LFTWORD] = COMBO_ACTION(leftword_combo)
+  [FP_FORTAB] = COMBO_ACTION(fowardtab_combo)
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
@@ -312,11 +303,6 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         tap_code16(LCTL(KC_DEL));
      }
       break;
-    case XCD_SELLINE:
-      if (pressed) {
-        tap_code16(LSFT(KC_END));
-     }
-      break;
     case WF_BCKTAB:
       if (pressed) {
         tap_code16(LCTL(LSFT(KC_TAB)));
@@ -326,16 +312,6 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       if (pressed) {
         tap_code16(LCTL(KC_TAB));
      }
-      break;
-    case RHTWORD:
-      if (pressed) {
-        tap_code16(LCTL(KC_RGHT));
-     }
-      break;
-    case LFTWORD:
-      if (pressed) {
-        tap_code16(LCTL(KC_LEFT));
-      }
       break;
   }
 }
