@@ -58,4 +58,4 @@
 
 
 //number of combos
-#define COMBO_COUNT 5
+#define COMBO_COUNT 6

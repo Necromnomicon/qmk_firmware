@@ -90,13 +90,16 @@ enum tap_dance_actions {
 };
 
 enum combos {
-  ZX_CUT,
-  ZC_COPY,
-  ZD_UNDO,
-  ZV_PASTE,
-  FP_FIND
+  ZX_BKSP,
+  DV_DEL
 };
 
+enum combo_events {
+  YU_BSPWORD,
+  LU_DELWORD,
+  WF_BCKTAB,
+  FP_FORTAB
+};
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
@@ -288,23 +291,47 @@ void right_bracket_reset (qk_tap_dance_state_t *state, void *user_data) {
 }
 
 
-  
-const uint16_t PROGMEM zx_combo[] = {KC_Z, KC_X, COMBO_END};
-const uint16_t PROGMEM zc_combo[] = {KC_Z, KC_C, COMBO_END};
-const uint16_t PROGMEM zd_combo[] = {KC_Z, KC_D, COMBO_END};
-const uint16_t PROGMEM zv_combo[] = {KC_Z, KC_V, COMBO_END};
-const uint16_t PROGMEM fp_combo[] = {KC_F, KC_P, COMBO_END};
-
-
+//Combo Definitions
+const uint16_t PROGMEM bksp_combo[] = {KC_Z, KC_X, COMBO_END};
+const uint16_t PROGMEM bspword_combo[] = {KC_Y, KC_U, COMBO_END};
+const uint16_t PROGMEM del_combo[] = {KC_D, KC_V, COMBO_END};
+const uint16_t PROGMEM delword_combo[] = {KC_L, KC_U, COMBO_END};
+const uint16_t PROGMEM fowardtab_combo[] = {KC_F, KC_P, COMBO_END};
+const uint16_t PROGMEM backtab_combo[] = {KC_W, KC_F, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [ZX_CUT] = COMBO(zx_combo, LCTL(KC_Z)),
-  [ZC_COPY] = COMBO(zc_combo,  LCTL(KC_C)),
-  [ZD_UNDO] = COMBO(zd_combo, LCTL(KC_Z)),
-  [ZV_PASTE] = COMBO(zv_combo,  LCTL(KC_V)),
-  [FP_FIND] = COMBO(fp_combo,  LCTL(KC_F))
-  
+  [ZX_BKSP] = COMBO(bksp_combo, KC_BSPC),
+  [DV_DEL] = COMBO(del_combo, KC_DEL),
+  [YU_BSPWORD] = COMBO_ACTION(bspword_combo),
+  [LU_DELWORD] = COMBO_ACTION(delword_combo),
+  [WF_BCKTAB] = COMBO_ACTION(backtab_combo),
+  [FP_FORTAB] = COMBO_ACTION(fowardtab_combo)
 };
+
+void process_combo_event(uint16_t combo_index, bool pressed) {
+  switch(combo_index) {
+    case YU_BSPWORD:
+      if (pressed) {
+        tap_code16(LCTL(KC_BSPC));
+      }
+      break;
+    case LU_DELWORD:
+      if (pressed) {
+        tap_code16(LCTL(KC_DEL));
+     }
+      break;
+    case WF_BCKTAB:
+      if (pressed) {
+        tap_code16(LCTL(LSFT(KC_TAB)));
+     }
+      break;
+    case FP_FORTAB:
+      if (pressed) {
+        tap_code16(LCTL(KC_TAB));
+     }
+      break;
+  }
+}
 
 
 //Tap Dance Definitions
