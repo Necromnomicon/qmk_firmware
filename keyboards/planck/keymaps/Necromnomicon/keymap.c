@@ -38,18 +38,22 @@
 #define CTL_K RCTL_T(KC_K)
 #define ALT_L RALT_T(KC_L)
 
-//homerow colemak
+//MOD HOME ROW COLEMAK
+#define MOD_A LGUI_T(KC_A)
+#define MOD_R LALT_T(KC_R)
+#define MOD_S LCTL_T(KC_S)
+#define MOD_T LSFT_T(KC_T)
+#define MOD_G MEH_T(KC_G) 
+#define MOD_M MEH_T(KC_M)
+#define MOD_N RSFT_T(KC_N)
+#define MOD_E RCTL_T(KC_E)
+#define MOD_I RALT_T(KC_I)
+#define MOD_O RGUI_T(KC_O)
 
-#define WIN_A LGUI_T(KC_A)
-#define ALT_R LALT_T(KC_R)
-#define CTL_S LCTL_T(KC_S)
-#define SFTT_T LSFT_T(KC_T)
-#define MEH_G MEH_T(KC_G)
-#define MEH_M MEH_T(KC_M)
-#define SFT_N RSFT_T(KC_N)
-#define CTL_E RCTL_T(KC_E)
-#define ALT_I RALT_T(KC_I)
-#define WIN_O RGUI_T(KC_O)
+//Layer Keys
+#define SYMENT LT(_SYM,KC_ENT)
+#define NUMSPC LT(_NUM,KC_SPC) 
+#define FNBSPC LT(_FN,KC_BSPC)
 
 
 //Copypaste
@@ -104,16 +108,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_QWERTY] = LAYOUT_planck_grid(
-    KC_TAB,  KC_Q,        KC_W,        KC_E,        KC_R,          KC_T,            KC_Y,            KC_U,              KC_I,           KC_O,        KC_P,    KC_BSPC,
-    KC_ESC,  WIN_A,       ALT_S,       CTL_D,       SFT_F,         MEH_G,           MEH_H,           SFT_J,             CTL_K,          ALT_L,       KC_SCLN, KC_QUOT,
-    KC_LSFT, KC_Z,        KC_X,        KC_C,        KC_V,          KC_B,            KC_N,            KC_M,              KC_COMM,        KC_DOT,      KC_SLSH, KC_ENT ,
-    KC_LCTL, KC_LALT,     KC_LGUI,     KC_ESC,      KC_TAB,        LT(_SYM,KC_ENT), LT(_NUM,KC_SPC), LT(_FN,KC_BSPC),   KC_DEL,         KC_NO,       KC_RALT, KC_RCTL
+    KC_TAB,  KC_Q,    KC_W,     KC_E,    KC_R,   KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+    KC_ESC,  WIN_A,   ALT_S,    CTL_D,   SFT_F,  MEH_G,   MEH_H,   SFT_J,   CTL_K,   ALT_L,   KC_SCLN, KC_QUOT,
+    KC_LSFT, KC_Z,    KC_X,     KC_C,    KC_V,   KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
+    KC_LCTL, KC_LALT, KC_LGUI,  KC_ESC,  KC_TAB, SYMENT,  NUMSPC,  FNBSPC,  KC_DEL,  KC_NO,   KC_RALT, KC_RCTL
 ),
 [_COLEMAK] = LAYOUT_planck_grid(
     KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-    KC_ESC,  WIN_A,   ALT_R,   CTL_S,   SFTT_T,  MEH_G,   MEH_M,   SFT_N,   CTL_E,   ALT_I,    WIN_O,  KC_QUOT,
+    KC_ESC,  MOD_A,   MOD_R,   MOD_S,   MOD_T,   MOD_G,   MOD_M,   MOD_N,   MOD_E,   MOD_I,   MOD_O,  KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    KC_LCTL, KC_LALT,     KC_LGUI,     KC_ESC,      KC_TAB,        LT(_SYM,KC_ENT), LT(_NUM,KC_SPC), LT(_FN,KC_BSPC),   KC_DEL,         KC_NO,       KC_RALT, KC_RCTL
+    KC_LCTL, KC_LALT, KC_LGUI, KC_ESC,  KC_TAB,  SYMENT,  NUMSPC,  FNBSPC,  KC_DEL,  KC_NO,   KC_RALT, KC_RCTL
 ),
 
 [_NUM] = LAYOUT_planck_grid( 

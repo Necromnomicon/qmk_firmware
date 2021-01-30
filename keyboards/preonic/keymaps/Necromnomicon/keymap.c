@@ -25,6 +25,26 @@
 #define OS_ALT	OSM(MOD_LALT)
 #define OS_GUI	OSM(MOD_LGUI)
 #define OS_MEH	OSM(MOD_MEH)
+#define DELWD   LCTL(KC_DEL)
+#define BSPWD   LCTL(KC_BSPC)
+
+
+//MOD HOME ROW COLEMAK
+#define MOD_A LGUI_T(KC_A)
+#define MOD_R LALT_T(KC_R)
+#define MOD_S LCTL_T(KC_S)
+#define MOD_T LSFT_T(KC_T)
+#define MOD_G MEH_T(KC_G) 
+#define MOD_M MEH_T(KC_M)
+#define MOD_N RSFT_T(KC_N)
+#define MOD_E RCTL_T(KC_E)
+#define MOD_I RALT_T(KC_I)
+#define MOD_O RGUI_T(KC_O)
+
+//Layer Keys
+#define SYMENT LT(_SYM,KC_ENT)
+#define NUMSPC LT(_NUM,KC_SPC) 
+#define FNBSPC LT(_FN,KC_BSPC)
 
 //Copypaste
 #define KC_CPY LCTL(KC_C)
@@ -79,19 +99,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_QWERTY] = LAYOUT_preonic_grid(
-  KC_UND,      KC_CUT,      KC_CPY,      KC_PST,          KC_FND,          KC_GRV,  KC_BSPC, KC_6,               LCTL(KC_DEL),      LCTL(KC_BSPC),  KC_9,        KC_0,
+  KC_UND,      KC_CUT,      KC_CPY,      KC_PST,          KC_FND,          KC_GRV,  KC_BSPC, KC_6,               DELWD,      BSPWD, KC_9,        KC_0,
   KC_Q,        KC_W,        KC_E,        KC_R,            KC_T,            TT(2),   TT(0),   KC_Y,               KC_U,              KC_I,           KC_O,        KC_P,  
   LGUI_T(KC_A),LALT_T(KC_S),LCTL_T(KC_D),LSFT_T(KC_F),    MEH_T(KC_G),     TT(4),   TT(1),   MEH_T(KC_H),        RSFT_T(KC_J),      RCTL_T(KC_K),   RALT_T(KC_L),KC_SCLN,
   KC_Z,        KC_X,        KC_C,        KC_V,            KC_B,            TT(3),   TT(5),   KC_N,               KC_M,              KC_COMM,        KC_DOT,      KC_QUOT, 
-  KC_NO,       KC_NO,       KC_NO,       KC_TAB,        LT(_SYM,KC_ENT),   KC_ESC,  KC_DEL,  LT(_NUM,KC_SPC),    LT(_FN,KC_BSPC),   KC_NO,          KC_NO,       KC_NO
+  KC_NO,       KC_NO,       KC_NO,       KC_TAB,          SYMENT,   KC_ESC,  KC_DEL,  NUMSPC,    FNBSPC,   KC_NO,          KC_NO,       KC_NO
 ),
 
-[_COLEMAK] = LAYOUT_preonic_grid( \
-  KC_UND,          KC_CUT,          KC_CPY,          KC_PST,          KC_FND,            KC_GRV,   KC_BSPC,    KC_6,               LCTL(KC_DEL),      LCTL(KC_BSPC),  KC_9,        KC_0,
-  KC_Q,            KC_W,            KC_F,            KC_P,            KC_B,              KC_TAB,   KC_DEL,     KC_J,               KC_L,              KC_U,           KC_Y,          KC_SCLN,
-  LGUI_T(KC_A),    LALT_T(KC_R),    LCTL_T(KC_S),    LSFT_T(KC_T),    MEH_T(KC_G),       KC_NO,    KC_QUOTE,   MEH_T(KC_M),        RSFT_T(KC_N),      RCTL_T(KC_E),   RALT_T(KC_I),  KC_O,   
-  KC_Z,            KC_X,            KC_C,            KC_D,            KC_V,              KC_LSFT,  KC_ENT,     KC_K,               KC_H,              KC_COMM,        KC_DOT,        KC_QUOT,
-  KC_NO,           KC_NO,           KC_NO,           KC_TAB,          LT(_SYM,KC_ENT),   KC_ESC,   KC_DEL,     LT(_NUM,KC_SPC),    LT(_FN,KC_BSPC),   KC_NO,          KC_NO,      KC_NO
+[_COLEMAK] = LAYOUT_preonic_grid( 
+  KC_UND,  KC_CUT,   KC_CPY,  KC_PST,   KC_FND,   KC_NO,   KC_NO,   KC_6,      DELWD,      BSPWD,   KC_INS,   KC_0,
+  KC_Q,    KC_W,     KC_F,    KC_P,     KC_B,     KC_NO,   KC_NO,   KC_J,      KC_L,       KC_U,    KC_Y,     KC_SCLN,
+  MOD_A,   MOD_R,    MOD_S,   MOD_T,    MOD_G,    KC_NO,   KC_NO,   MOD_M,     MOD_N,      MOD_E,   MOD_I,    MOD_O,  
+  KC_Z,    KC_X,     KC_C,    KC_D,     KC_V,     KC_NO,   KC_NO,   KC_K,      KC_H,       KC_COMM, KC_DOT,   KC_QUOT,
+  KC_NO,   KC_NO,    KC_NO,   KC_TAB,   SYMENT,   KC_ESC,  KC_DEL,  NUMSPC,    FNBSPC,     KC_NO,   KC_NO,    KC_NO
 ),
 
 [_NUM] = LAYOUT_preonic_grid( 
