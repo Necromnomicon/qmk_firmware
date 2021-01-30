@@ -54,6 +54,8 @@
 #define SYMENT LT(_SYM,KC_ENT)
 #define NUMSPC LT(_NUM,KC_SPC) 
 #define FNBSPC LT(_FN,KC_BSPC)
+#define FUNTAB LT(_FN,KC_TAB)
+#define MOUBSP LT(_MOU,KC_BSPC)
 
 
 //Copypaste
@@ -67,7 +69,8 @@ enum planck_layers {
 _QWERTY,
 _COLEMAK,
 _NUM,												
-_FN, 
+_FN,
+_MOU,
 _SYM, 
 _BOARD,
 _GAME,
@@ -80,6 +83,7 @@ COLEMAK,
 NUM,												
 FN, 
 SYM, 
+MOU,
 BOARD,
 GAME,
 GAMEFXN,
@@ -111,21 +115,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,     KC_E,    KC_R,   KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_ESC,  WIN_A,   ALT_S,    CTL_D,   SFT_F,  MEH_G,   MEH_H,   SFT_J,   CTL_K,   ALT_L,   KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,     KC_C,    KC_V,   KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    KC_LCTL, KC_LALT, KC_LGUI,  KC_ESC,  KC_TAB, SYMENT,  NUMSPC,  FNBSPC,  KC_DEL,  KC_NO,   KC_RALT, KC_RCTL
+    KC_LCTL, KC_LALT, KC_LGUI,  KC_ESC,  FUNTAB, SYMENT,  NUMSPC,  MOUBSP,  KC_DEL,  KC_NO,   KC_RALT, KC_RCTL
 ),
 [_COLEMAK] = LAYOUT_planck_grid(
     KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
     KC_ESC,  MOD_A,   MOD_R,   MOD_S,   MOD_T,   MOD_G,   MOD_M,   MOD_N,   MOD_E,   MOD_I,   MOD_O,  KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    KC_LCTL, KC_LALT, KC_LGUI, KC_ESC,  KC_TAB,  SYMENT,  NUMSPC,  FNBSPC,  KC_DEL,  KC_NO,   KC_RALT, KC_RCTL
+    KC_LCTL, KC_LALT, KC_LGUI, KC_ESC,  FUNTAB,  SYMENT,  NUMSPC,  MOUBSP,  KC_DEL,  KC_NO,   KC_RALT, KC_RCTL
 ),
 
 [_NUM] = LAYOUT_planck_grid( 
-  KC_TAB,   KC_PGUP,         KC_HOME,        KC_UP,        KC_END,          KC_FND,          KC_EQL,          KC_7,             KC_8,             KC_9,         KC_PPLS,        KC_NO,
+  KC_TAB,   KC_PGUP,         KC_HOME,        KC_UP,           KC_END,          KC_FND,          KC_EQL,          KC_7,             KC_8,             KC_9,         KC_PPLS,        KC_NO,
   KC_ESC,   LGUI_T(KC_PGDN), LALT_T(KC_LEFT),LCTL_T(KC_DOWN), LSFT_T(KC_RGHT), KC_MEH,          KC_PPLS,         RSFT_T(KC_4),     RCTL_T(KC_5),     RALT_T(KC_6), RGUI_T(KC_PMNS),KC_NO,
-  KC_LSFT,  KC_UND,         KC_CUT,        KC_CPY,       KC_PST,          KC_CAPS,         KC_PAST,         KC_1,             KC_2,             KC_3,         TD(SLASHES),    KC_NO,
-  KC_LCTL,  KC_LALT,         KC_LGUI,         KC_ESC,        KC_TAB,          LT(_SYM,KC_ENT), LT(_NUM,KC_SPC), KC_0,             LT(_FN,KC_BSPC),  KC_DEL,       KC_NO,          KC_NO
+  KC_LSFT,  KC_UND,          KC_CUT,         KC_CPY,          KC_PST,          KC_CAPS,         KC_PAST,         KC_1,             KC_2,             KC_3,         TD(SLASHES),    KC_NO,
+  KC_LCTL,  KC_LALT,         KC_LGUI,        KC_ESC,          FUNTAB,          SYMENT,          NUMSPC,          KC_0,             KC_NO,            KC_NO,       KC_NO,          KC_NO
 ),
+
+[_MOU] = LAYOUT_planck_grid(
+    KC_NO,   KC_WH_U, KC_WH_L,  KC_MS_U, KC_WH_R,  KC_NO,   KC_NO,   KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,
+    KC_NO,   KC_WH_D, KC_MS_L,  KC_MS_D, KC_MS_R,  KC_NO,   KC_NO,   KC_BTN1, KC_BTN2,  KC_BTN3, KC_NO,   KC_NO,
+    KC_LSFT, KC_NO,   KC_NO,    KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,
+    KC_LCTL, KC_LALT, KC_LGUI,  _______, _______,  _______, _______, _______, _______,  KC_NO,   KC_RALT, KC_RCTL
+), 
 
 [_FN] = LAYOUT_planck_grid(
   KC_NO,  KC_BRID, KC_BRIU,     KC_VOLD,     KC_VOLU,     KC_NO,     KC_PSCR,  KC_F7,    KC_F8,       KC_F9,       KC_F10,   KC_NO,
@@ -142,9 +153,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_BOARD] = LAYOUT_planck_grid(
-  RESET,       KC_NO,          KC_NO,        KC_NO,    KC_NO,   KC_NO,   TERM_ON, TERM_OFF,    KC_NO,       KC_NO,      KC_NO,       GAME,
-  DEBUG,       KC_NO,          MU_MOD,       AU_ON,    AU_OFF,  AG_NORM, AG_SWAP, KC_NO,       KC_NO,       KC_NO,      KC_NO,       COLEMAK,
-  KC_PWR,      MUV_DE,         MUV_IN,       MU_ON,    MU_OFF,  MI_ON,   MI_OFF,  KC_NO,       KC_NO,       KC_NO,      KC_NO,       QWERTY,
+  RESET,       KC_NO,          KC_NO,        KC_NO,    KC_NO,   KC_NO,   TERM_ON, TERM_OFF,    KC_NO,       KC_NO,      KC_NO,       COLEMAK,
+  DEBUG,       KC_NO,          MU_MOD,       AU_ON,    AU_OFF,  AG_NORM, AG_SWAP, KC_NO,       KC_NO,       KC_NO,      KC_NO,       QWERTY,
+  KC_PWR,      MUV_DE,         MUV_IN,       MU_ON,    MU_OFF,  MI_ON,   MI_OFF,  KC_NO,       KC_NO,       KC_NO,      KC_NO,       GAME,
   KC_SLEP,     KC_NO,          KC_NO,        _______,  _______, _______, _______, _______,     _______,     KC_NO,      KC_NO,       KC_NO
 ),
 [_GAME] = LAYOUT_planck_grid(
@@ -169,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #endif
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, _FN, _NUM, _BOARD);
+  return update_tri_layer_state(state, _FN, _MOU, _BOARD);
 }
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
    switch (keycode) {

@@ -45,6 +45,8 @@
 #define SYMENT LT(_SYM,KC_ENT)
 #define NUMSPC LT(_NUM,KC_SPC) 
 #define FNBSPC LT(_FN,KC_BSPC)
+#define FUNTAB LT(_FN,KC_TAB)
+#define MOUBSP LT(_MOU,KC_BSPC)
 
 //Copypaste
 #define KC_CPY LCTL(KC_C)
@@ -58,6 +60,7 @@ _QWERTY,
 _COLEMAK,
 _NUM,												
 _FN, 
+_MOU,
 _SYM, 
 _BOARD,
 _GAME,
@@ -69,6 +72,7 @@ QWERTY= SAFE_RANGE,
 COLEMAK,
 NUM,												
 FN, 
+MOU,
 SYM, 
 BOARD,
 GAME,
@@ -103,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,        KC_W,        KC_E,        KC_R,            KC_T,            TT(2),   TT(0),   KC_Y,               KC_U,              KC_I,           KC_O,        KC_P,  
   LGUI_T(KC_A),LALT_T(KC_S),LCTL_T(KC_D),LSFT_T(KC_F),    MEH_T(KC_G),     TT(4),   TT(1),   MEH_T(KC_H),        RSFT_T(KC_J),      RCTL_T(KC_K),   RALT_T(KC_L),KC_SCLN,
   KC_Z,        KC_X,        KC_C,        KC_V,            KC_B,            TT(3),   TT(5),   KC_N,               KC_M,              KC_COMM,        KC_DOT,      KC_QUOT, 
-  KC_NO,       KC_NO,       KC_NO,       KC_TAB,          SYMENT,   KC_ESC,  KC_DEL,  NUMSPC,    FNBSPC,   KC_NO,          KC_NO,       KC_NO
+  KC_NO,       KC_NO,       KC_NO,       FUNTAB,          SYMENT,          KC_ESC,  KC_DEL,  NUMSPC,    MOUBSP,   KC_NO,          KC_NO,       KC_NO
 ),
 
 [_COLEMAK] = LAYOUT_preonic_grid( 
@@ -111,19 +115,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,    KC_W,     KC_F,    KC_P,     KC_B,     KC_NO,   KC_NO,   KC_J,      KC_L,       KC_U,    KC_Y,     KC_SCLN,
   MOD_A,   MOD_R,    MOD_S,   MOD_T,    MOD_G,    KC_NO,   KC_NO,   MOD_M,     MOD_N,      MOD_E,   MOD_I,    MOD_O,  
   KC_Z,    KC_X,     KC_C,    KC_D,     KC_V,     KC_NO,   KC_NO,   KC_K,      KC_H,       KC_COMM, KC_DOT,   KC_QUOT,
-  KC_NO,   KC_NO,    KC_NO,   KC_TAB,   SYMENT,   KC_ESC,  KC_DEL,  NUMSPC,    FNBSPC,     KC_NO,   KC_NO,    KC_NO
+  KC_NO,   KC_NO,    KC_NO,   FUNTAB,   SYMENT,   KC_ESC,  KC_DEL,  NUMSPC,    MOUBSP,     KC_NO,   KC_NO,    KC_NO
 ),
 
 [_NUM] = LAYOUT_preonic_grid( 
-  KC_1,            KC_2,            KC_3,            KC_4,            KC_5,      KC_GRV,  KC_BSPC,   KC_6,         KC_7,         KC_8,         KC_9,        KC_0,
-  KC_PGUP,         KC_HOME,         KC_UP,           KC_END,          KC_NO,    TT(2),    TT(0),    KC_EQL,       KC_7,         KC_8,         KC_9,         KC_TAB,
-  LGUI_T(KC_PGDN), LALT_T(KC_LEFT), LCTL_T(KC_DOWN), LSFT_T(KC_RGHT), KC_MEH,    TT(4),    TT(1),    KC_PPLS,      RSFT_T(KC_4), RCTL_T(KC_5), RALT_T(KC_6), RGUI_T(KC_PMNS),
-  KC_NO,           LCTL(KC_LEFT),   KC_NO,           LCTL(KC_RGHT),   KC_CAPS,   TT(3),    TT(5),    KC_PAST,      KC_1,         KC_2,         KC_3,         TD(SLASHES),
-  KC_NO,           KC_NO,           KC_NO,         _______,         _______,   _______,  _______,  _______,      KC_0,         KC_NO,        KC_NO,        KC_NO 
+  KC_1,            KC_2,            KC_3,            KC_4,            KC_5,     KC_GRV,  KC_BSPC,  KC_6,         KC_7,         KC_8,         KC_9,         KC_0,
+  KC_PGUP,         KC_HOME,         KC_UP,           KC_END,          KC_NO,    TT(2),   TT(0),    KC_EQL,       KC_7,         KC_8,         KC_9,         KC_TAB,
+  LGUI_T(KC_PGDN), LALT_T(KC_LEFT), LCTL_T(KC_DOWN), LSFT_T(KC_RGHT), KC_MEH,   TT(4),   TT(1),    KC_PPLS,      RSFT_T(KC_4), RCTL_T(KC_5), RALT_T(KC_6), RGUI_T(KC_PMNS),
+  KC_NO,           LCTL(KC_LEFT),   KC_NO,           LCTL(KC_RGHT),   KC_CAPS,  TT(3),   TT(5),    KC_PAST,      KC_1,         KC_2,         KC_3,         TD(SLASHES),
+  KC_NO,           KC_NO,           KC_NO,           _______,         _______,  _______, _______,  _______,      KC_0,         KC_NO,        KC_NO,        KC_NO 
 ),
 
+
+[_MOU] = LAYOUT_preonic_grid(
+    KC_NO,   KC_NO,    KC_NO,   KC_NO,    KC_NO,   KC_NO,             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, 
+    KC_WH_U, KC_WH_L,  KC_MS_U, KC_WH_R,  KC_NO,   KC_NO,             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    KC_WH_D, KC_MS_L,  KC_MS_D, KC_MS_R,  KC_NO,   KC_NO,             KC_NO,   KC_NO,   KC_BTN1, KC_BTN2, KC_BTN3, KC_NO,
+    KC_NO,   KC_NO,    KC_NO,   KC_NO,    KC_NO,   KC_NO,             KC_NO,   KC_NO ,  KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    KC_LSFT, KC_LCTL,  KC_LALT, _______, _______,  _______,           _______, _______, _______, KC_RALT, KC_RCTL, KC_RSFT
+), 
+
 [_FN] = LAYOUT_preonic_grid(
-  KC_1,          KC_2,        KC_3,        KC_4,            KC_5,            KC_GRV,  KC_BSPC,   KC_6,               KC_7,              KC_8,           KC_9,        KC_0,
+  KC_1,    KC_2,        KC_3,        KC_4,        KC_5,       KC_GRV,  KC_BSPC,   KC_6,         KC_7,        KC_8,        KC_9,        KC_0,
   KC_BRID, KC_BRIU,     KC_VOLD,     KC_VOLU,     KC_NO,      TT(2),    TT(0),    KC_PSCR,      KC_F7,       KC_F8,       KC_F9,       KC_F10, 
   OS_GUI,  OS_ALT,      OS_CTL,      OS_SFT,      OS_MEH,     TT(4),    TT(1),    KC_SLCK,      KC_F4,       KC_F5,       KC_F6,       KC_F11,
   KC_MPRV, KC_MSTP,     KC_MPLY,     KC_MNXT,     KC_NO,      TT(3),    TT(5),    KC_SLCK,      KC_F4,       KC_F5,       KC_F6,       KC_F12, 
@@ -131,18 +144,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_SYM] = LAYOUT_preonic_grid(
-  KC_1,          KC_2,        KC_3,        KC_4,            KC_5,            KC_GRV,  KC_BSPC,   KC_6,               KC_7,              KC_8,           KC_9,        KC_0,
-  KC_TILD,     KC_GRV,         KC_UNDS,   KC_MINS,   KC_NO,     TT(2),   TT(0),   KC_PLUS,     KC_AMPR,    KC_ASTR,     KC_LPRN,      KC_RPRN, 
-  KC_NO,       KC_LALT,        KC_LCTL,   KC_LSFT,    KC_NO,     TT(4),   TT(1),   KC_PIPE,     KC_DLR,     KC_PERC,     KC_CIRC,      KC_UNDS,
-  KC_NO,       KC_NO,          TD(LBRACK),TD(RBRACK),KC_NO,     TT(3),   TT(5),   KC_BSLS,     KC_EXLM,    KC_AT,       KC_HASH,      KC_QUES, 
-  KC_NO,       KC_NO,          KC_NO,     _______,   _______,   _______, _______, _______,   _______,      KC_NO,       KC_NO,        KC_NO 
+  KC_1,        KC_2,           KC_3,      KC_4,      KC_5,      KC_GRV,  KC_BSPC, KC_6,        KC_7,       KC_8,        KC_9,        KC_0,
+  KC_TILD,     KC_GRV,         KC_UNDS,   KC_MINS,   KC_NO,     TT(2),   TT(0),   KC_PLUS,     KC_AMPR,    KC_ASTR,     KC_LPRN,     KC_RPRN, 
+  KC_NO,       KC_LALT,        KC_LCTL,   KC_LSFT,   KC_NO,     TT(4),   TT(1),   KC_PIPE,     KC_DLR,     KC_PERC,     KC_CIRC,     KC_UNDS,
+  KC_NO,       KC_NO,          TD(LBRACK),TD(RBRACK),KC_NO,     TT(3),   TT(5),   KC_BSLS,     KC_EXLM,    KC_AT,       KC_HASH,     KC_QUES, 
+  KC_NO,       KC_NO,          KC_NO,     _______,   _______,   _______, _______, _______,   _______,      KC_NO,       KC_NO,       KC_NO 
 ),
 
 [_BOARD] = LAYOUT_preonic_grid(
-  KC_NO, KC_NO, KC_NO,KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-  RESET,       KC_NO,          KC_NO,        KC_NO,    KC_NO,   KC_NO,   TERM_ON, TERM_OFF,    KC_NO,       KC_NO,      KC_NO,       GAME,
-  DEBUG,       KC_NO,          MU_MOD,       AU_ON,    AU_OFF,  AG_NORM, AG_SWAP, KC_NO,       KC_NO,       KC_NO,      KC_NO,       COLEMAK,
-  KC_PWR,      MUV_DE,         MUV_IN,       MU_ON,    MU_OFF,  MI_ON,   MI_OFF,  KC_NO,       KC_NO,       KC_NO,      KC_NO,       QWERTY,
+  RESET ,      KC_NO,          KC_NO,        KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,       KC_NO,       KC_NO,      KC_NO,       COLEMAK,
+  RESET,       KC_NO,          KC_NO,        KC_NO,    KC_NO,   KC_NO,   TERM_ON, TERM_OFF,    KC_NO,       KC_NO,      KC_NO,       QWERTY,
+  DEBUG,       KC_NO,          MU_MOD,       AU_ON,    AU_OFF,  AG_NORM, AG_SWAP, KC_NO,       KC_NO,       KC_NO,      KC_NO,       GAME ,
+  KC_PWR,      MUV_DE,         MUV_IN,       MU_ON,    MU_OFF,  MI_ON,   MI_OFF,  KC_NO,       KC_NO,       KC_NO,      KC_NO,       KC_NO,
   KC_SLEP,     KC_NO,          KC_NO,        _______,  _______, _______, _______, _______,     _______,     KC_NO,      KC_NO,       KC_NO
 ),
 [_GAME] = LAYOUT_preonic_grid(
@@ -168,7 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #endif
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, _FN, _NUM, _BOARD);
+  return update_tri_layer_state(state, _FN, _MOU, _BOARD);
 }
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
    switch (keycode) {
