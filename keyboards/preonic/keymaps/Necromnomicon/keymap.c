@@ -111,11 +111,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_COLEMAK] = LAYOUT_preonic_grid( 
-  KC_UND,  KC_CUT,   KC_CPY,  KC_PST,   KC_FND,   KC_NO,   KC_NO,   KC_6,      DELWD,      BSPWD,   KC_INS,   KC_0,
-  KC_Q,    KC_W,     KC_F,    KC_P,     KC_B,     KC_NO,   KC_NO,   KC_J,      KC_L,       KC_U,    KC_Y,     KC_SCLN,
-  MOD_A,   MOD_R,    MOD_S,   MOD_T,    MOD_G,    KC_NO,   KC_NO,   MOD_M,     MOD_N,      MOD_E,   MOD_I,    MOD_O,  
-  KC_Z,    KC_X,     KC_C,    KC_D,     KC_V,     KC_NO,   KC_NO,   KC_K,      KC_H,       KC_COMM, KC_DOT,   KC_QUOT,
-  KC_NO,   KC_NO,    KC_NO,   FUNTAB,   SYMENT,   KC_ESC,  KC_DEL,  NUMSPC,    MOUBSP,     KC_NO,   KC_NO,    KC_NO
+  KC_UND,  KC_CUT,   KC_CPY,  KC_PST,   KC_FND,   KC_MINS, KC_EQL,   KC_6,      DELWD,      BSPWD,   KC_INS,   KC_0,
+  KC_Q,    KC_W,     KC_F,    KC_P,     KC_B,     KC_LBRC, KC_RBRC,  KC_J,      KC_L,       KC_U,    KC_Y,     KC_SCLN,
+  MOD_A,   MOD_R,    MOD_S,   MOD_T,    MOD_G,    KC_LPRN, KC_RPRN,  MOD_M,     MOD_N,      MOD_E,   MOD_I,    MOD_O,  
+  KC_Z,    KC_X,     KC_C,    KC_D,     KC_V,     KC_BSLS, KC_SLASH, KC_K,      KC_H,       KC_COMM, KC_DOT,   KC_QUOT,
+  KC_NO,   KC_NO,    KC_NO,   FUNTAB,   SYMENT,   KC_ESC,  KC_DEL,   NUMSPC,    MOUBSP,     KC_NO,   KC_NO,    KC_NO
 ),
 
 [_NUM] = LAYOUT_preonic_grid( 
