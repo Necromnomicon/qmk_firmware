@@ -35,8 +35,13 @@
 
 // Most tactile encoders have detents every 4 stages
 #define ENCODER_RESOLUTION 4
+
+
 #define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_TERM 220
 #define TAPPING_TOGGLE 3
 #define COMBO_TERM 30
 #define COMBO_COUNT 6
+#define MOUSEKEY_INTERVAL 16
+#define MOUSEKEY_MAX_SPEED 7
+#define MOUSEKEY_TIME_TO_MAX 30
