@@ -13,7 +13,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+<<<<<<< Updated upstream
 //making a simple change to see if is caught. 
+=======
+// this is a test 
+>>>>>>> Stashed changes
 #include QMK_KEYBOARD_H
 
 
