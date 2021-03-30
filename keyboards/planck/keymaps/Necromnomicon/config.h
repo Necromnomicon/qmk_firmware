@@ -58,6 +58,9 @@
 
 
 //number of combos
-#define COMBO_COUNT 6
-#define TAPPING_TOGGLE 3
 #define COMBO_TERM 30
+#define COMBO_COUNT 6
+#define MOUSEKEY_INTERVAL 16
+#define MOUSEKEY_MAX_SPEED 10
+#define MOUSEKEY_TIME_TO_MAX 50
+#define MOUSEKEY_DELAY 50
