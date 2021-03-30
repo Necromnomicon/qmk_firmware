@@ -59,3 +59,5 @@
 
 //number of combos
 #define COMBO_COUNT 6
+#define TAPPING_TOGGLE 3
+#define COMBO_TERM 30
